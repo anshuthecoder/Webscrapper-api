@@ -62,4 +62,12 @@ router.post('/delete', async (req, res) => {
   }
 });
 
+router.get('/details/:id', async (req, res) => {
+  try {
+    const data = await ScrapedData.findById(req.params.id);
+    res.json(data);
+  } catch (error) {
+    res.status(500).send('Error fetching data');
+  }
+});
 module.exports = router;
